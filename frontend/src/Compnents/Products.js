@@ -13,6 +13,7 @@ const Products = () => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredItems, setFilteredItems] = useState(products);
+  const [searchInput, setSearchInput] = useState("");
 
   const Add_to_cart = (product) => {
     dispatch(
@@ -29,6 +30,20 @@ const Products = () => {
       );
     }
   };
+
+  const filterSearch = (search) => {
+    const results = products.filter((items) => {
+      return items.title.toLowerCase().includes(search);
+    });
+    setFilteredItems(results);
+  };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+    filterSearch(searchInput);
+  };
+
   return (
     <>
       <div
@@ -37,8 +52,25 @@ const Products = () => {
           width: "100%",
         }}
       >
-        <div style={{ width: "72%" }}>
+        <div style={{ width: "72%", display: "flex" }}>
           <h1>Products</h1>
+          <div
+            style={{
+              display: "flex",
+              justifyContent: "right",
+              marginTop: "10px",
+              marginLeft: "200px",
+            }}
+          >
+            <h4>Search: </h4>
+            <input
+              style={{ width: "230px", height: "35px", marginLeft: "10px" }}
+              type="search"
+              placeholder="Search here"
+              onChange={handleSearch}
+              value={searchInput}
+            />
+          </div>
         </div>
         <div
           style={{

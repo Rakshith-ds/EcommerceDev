@@ -13,6 +13,7 @@ function App() {
     <>
       <Router>
         <Routes>
+          <Route path="/" Component={() => <SignIn />} />
           <Route path="/SignIn" Component={() => <SignIn />} />
           <Route path="/SignUp" Component={() => <SignUp />} />
           <Route path="/" Component={() => <RootLayout />}>

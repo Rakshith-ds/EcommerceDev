@@ -14,7 +14,7 @@ const RootLayout = () => {
         <Navboard user={user} />
         <main style={{ display: "flex" }}>
           <SideBar />
-          <div style={{ height: "100vh", overflow: "auto", width: "auto" }}>
+          <div style={{ height: "100vh", overflow: "auto", width: "100%" }}>
             <Outlet />
           </div>
         </main>
