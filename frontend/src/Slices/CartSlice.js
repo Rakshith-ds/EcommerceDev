@@ -7,11 +7,11 @@ const cartSlice = createSlice({
   name: "cart",
   initialState,
   reducers: {
-    add(state, { payload }) {
-      state.cartData = payload;
+    add(state, action) {
+      state.cartData = action.payload;
     },
-    remove(state, { payload }) {
-      state.cartData = payload;
+    remove(state, action) {
+      state.cartData = action.payload;
     },
   },
 });

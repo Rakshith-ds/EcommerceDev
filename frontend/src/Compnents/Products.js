@@ -17,7 +17,10 @@ const Products = () => {
 
   const Add_to_cart = (product) => {
     dispatch(
-      add([...cartItems1, ...[{ ...product, cartId: cartItems1.length }]])
+      add([
+        ...cartItems1,
+        ...[{ ...product, cartId: cartItems1.length, quantity: 1 }],
+      ])
     );
   };
 

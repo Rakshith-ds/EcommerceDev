@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { Button } from "react-bootstrap";
 import Card from "react-bootstrap/Card";
 import { cartItems, remove } from "../Slices/CartSlice";
+import CartItem from "./CartItem";
 
 const Cart = () => {
   const cartProducts = useSelector(cartItems);
@@ -24,7 +25,7 @@ const Cart = () => {
               width: "50%",
             }}
           >
-            <Card className="h-100">
+            {/* <Card className="h-100">
               <div className="text-center" key={product.id}>
                 <Card.Img
                   variant="top"
@@ -48,7 +49,8 @@ const Cart = () => {
                   Remove
                 </Button>
               </Card.Footer>
-            </Card>
+            </Card> */}
+            <CartItem />
           </div>
         );
       })}

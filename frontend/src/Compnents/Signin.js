@@ -1,5 +1,5 @@
 import Form from "react-bootstrap/Form";
-import api from "/Users/rakshithds/Desktop/ReactJS/Frontend/src/api/link.js";
+import api from "/Users/rakshithds/Desktop/ReactJS/frontend/src/api/link.js";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
@@ -7,15 +7,20 @@ function SignIn() {
   const [user, setUser] = useState("");
 
   const navigate = useNavigate();
+  const result_token = sessionStorage.getItem("token");
 
   const sendRequest = async (user) => {
     const request = await api.post("/signin", user);
     setUser(request.data);
-    console.log(request.data);
     alert(request.data.message);
     if (request.data.message === "Logged In") {
       const name = request.data.name;
       sessionStorage.setItem("name", name);
+      console.log(result_token);
+      if (result_token === "" || result_token === null) {
+        const token_data = await api.post("/token", user);
+        sessionStorage.setItem("token", token_data.data);
+      }
       navigate("/Home");
     } else {
       alert(request.data.message);

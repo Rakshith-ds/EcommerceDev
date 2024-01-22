@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import App from "./App";
 import { Provider } from "react-redux";
-import store from "/Users/rakshithds/Desktop/ReactJS/Frontend/src/Store/store.js";
+import store from "/Users/rakshithds/Desktop/ReactJS/frontend/src/Store/store.js";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <Provider store={store}>
