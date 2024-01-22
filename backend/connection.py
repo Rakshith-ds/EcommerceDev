@@ -1,6 +1,8 @@
 import pandas as pd
 import sqlalchemy as sq
 import datetime as dt
+from sqlalchemy import text
+
 
 dbDetails = {
     "username": "root",
@@ -22,12 +24,12 @@ def insertdata(i):
         return "Email already exists"      
     else:
         query = '''INSERT INTO test.userdetails (firstName, lastName, email, password, repassword) VALUES ('{firstname}','{lastname}','{email}','{password}','{repassword}')'''.format(firstname=i["firstName"],lastname=i["lastName"],email=i["email"],password=i["password"],repassword=i["repassword"])
-        conn = engine.connect().execute(query)
+        conn = engine.connect().execute(text(query))
         return "Thank u for signing up"
         
 def logindata(i):
     query = '''SELECT * from test.userdetails where email = '{email}' and password = '{password}' '''.format(email=i["email"], password=i["password"])
-    conn = engine.connect().execute(query).fetchall()
+    conn = engine.connect().execute(text(query)).fetchall()
     result = [i[0] for i in conn]
     details = list(conn[0])
     emailcheck = len(result)

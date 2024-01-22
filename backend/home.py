@@ -3,18 +3,12 @@ from flask import request,jsonify
 from flask_cors import CORS
 # from getProducts import products
 import connection
-
+from create_token import get_token
 
 
 app = Flask(__name__)
 
 CORS(app)
-
-@app.route('/',methods=['POST'])
-def hello():
-
-	return "hello"
-
 
 @app.route('/signup',methods=['POST'])
 def SignUp():
@@ -30,11 +24,12 @@ def login():
 	dbdata = connection.logindata(dbjson)
 	return dbdata
 
-# @app.route('/products',methods=['GET'])
-# def getProducts():
-# 	productslist = products()
-# 	return jsonify(productslist)
 
+@app.route('/token',methods=['POST'])
+def create_token():
+	dbjson = request.get_json()
+	result = get_token(dbjson)
+	return result
 
 if __name__ == '__main__':
 	app.run(debug=True,host='0.0.0.0')
