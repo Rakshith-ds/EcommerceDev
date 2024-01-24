@@ -12,7 +12,7 @@ const Cart = () => {
 
   return (
     <>
-      <section className="image-list">
+      <section className="cart-list">
         <div className="container">
           <div className="total-cart">
             <div className="row">

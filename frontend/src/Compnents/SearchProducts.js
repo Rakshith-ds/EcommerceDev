@@ -5,17 +5,22 @@ import { cartItems } from "../Slices/CartSlice";
 import { useState, useEffect } from "react";
 import "../css/products.css";
 import { Link } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 
-const Products = () => {
+const SeachProducts = () => {
   const products = useSelector(productsData);
   const cartItems1 = useSelector(cartItems);
   const dispatch = useDispatch();
 
   const [filteredItems, setFilteredItems] = useState(products);
 
+  const location = useLocation();
+  const { searchInput } = location.state || {};
+
   useEffect(() => {
     document.title = "Products";
-  }, []);
+    filterSearch(searchInput);
+  }, [searchInput]);
 
   const Add_to_cart = (product) => {
     dispatch(
@@ -24,6 +29,22 @@ const Products = () => {
         ...[{ ...product, cartId: cartItems1.length, quantity: 1 }],
       ])
     );
+  };
+  //   const getFilteredItems = (e) => {
+  //     if (selectedCategory === "All") {
+  //       setFilteredItems(products);
+  //     } else {
+  //       setFilteredItems(
+  //         products.filter((item) => item.category === selectedCategory)
+  //       );
+  //     }
+  //   };
+
+  const filterSearch = (search) => {
+    const results = products.filter((items) => {
+      return items.title.toLowerCase().includes(search.toLowerCase());
+    });
+    setFilteredItems(results);
   };
 
   return (
@@ -34,26 +55,7 @@ const Products = () => {
           width: "100%",
         }}
       >
-        <div style={{ width: "72%", display: "flex" }}>
-          <h1>Products</h1>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "right",
-              marginTop: "10px",
-              marginLeft: "200px",
-            }}
-          >
-            <h4>Search: </h4>
-            <input
-              style={{ width: "230px", height: "35px", marginLeft: "10px" }}
-              type="search"
-              placeholder="Search here"
-              onChange={handleSearch}
-              value={searchInput}
-            />
-          </div>
-        </div>
+      
         <div
           style={{
             display: "flex",
@@ -161,4 +163,4 @@ const Products = () => {
     </>
   );
 };
-export default Products;
+export default SeachProducts;

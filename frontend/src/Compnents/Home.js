@@ -80,9 +80,9 @@ const Home = () => {
                 delectus, tempora reiciendis sapiente saepe recusandae,
                 provident, alias eligendi magnam? A obcaecati modi ab.
               </p>
-              <a href="#" target="_blank" rel="noopener noreferrer">
+              {/* <a href="#" target="_blank" rel="noopener noreferrer">
                 Subscribe
-              </a>
+              </a> */}
             </div>
           </div>
         </div>

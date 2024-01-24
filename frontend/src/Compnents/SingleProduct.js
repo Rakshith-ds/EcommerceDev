@@ -42,11 +42,7 @@ const SingleProduct = () => {
           {product.description}
         </span>
         <span className="single-product-price">${product.price}</span>
-        <Button
-          variant="primary"
-          onClick={() => Add_to_cart(product?.cartId)}
-          // className="btn-buy"
-        >
+        <Button variant="primary" onClick={() => Add_to_cart(product?.cartId)}>
           Add to Cart
         </Button>
       </div>

@@ -10,17 +10,36 @@ import { Link } from "react-router-dom";
 import { cartItems } from "../Slices/CartSlice";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { useState } from "react";
 
 const Navboard = (props) => {
   const navigate = useNavigate();
   const cartProducts = useSelector(cartItems);
   const userName = sessionStorage.getItem("name");
+  const [searchInput, setSearchInput] = useState("");
 
   const logout = () => {
     sessionStorage.clear();
     alert("log out");
     navigate("/SignIn");
   };
+
+  const handleSearch = (e) => {
+    e.preventDefault();
+    setSearchInput(e.target.value);
+  };
+
+  const getFilteredItems = () => {
+    navigate("/SearchProducts", { state: { searchInput } });
+  };
+  console.log(searchInput);
+
+  // const handleOnKeyDown = (e) => {
+  //   e.preventDefault();
+  //   if (e.key === "Enter") {
+  //     navigate("/SearchProducts", { state: { searchInput } });
+  //   }
+  // };
 
   return (
     <>
@@ -45,8 +64,13 @@ const Navboard = (props) => {
               className="me-2"
               aria-label="Search"
               style={{ width: "400px" }}
+              onChange={handleSearch}
+              value={searchInput}
+              // onKeyDown={handleOnKeyDown}
             />
-            <Button variant="outline-success">Search</Button>
+            <Button variant="outline-success" onClick={getFilteredItems}>
+              Search
+            </Button>
           </Form>
           <Nav className="justify-content-end">
             <Image
