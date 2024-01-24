@@ -25,10 +25,10 @@ const Navboard = (props) => {
   return (
     <>
       {/* <Navbar style={{ backgroundColor: "#f5f6fc" }} fixed="top"> */}
-      <Navbar bg="light" data-bs-theme="light">
+      <Navbar bg="light" data-bs-theme="light" fixed="top">
         <Container>
           <Navbar.Brand to="/Home" as={Link}>
-            Navbar
+            EcommerceCart
           </Navbar.Brand>
           <Nav className="me-auto">
             <Nav.Link to="/Home" as={Link}>

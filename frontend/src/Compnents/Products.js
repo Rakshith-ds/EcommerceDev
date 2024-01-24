@@ -1,10 +1,10 @@
-import Button from "react-bootstrap/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../Slices/CartSlice";
 import { productsData } from "../Slices/ProductSlice";
 import { cartItems } from "../Slices/CartSlice";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import "../css/products.css";
+import { Link } from "react-router-dom";
 
 const Products = () => {
   const products = useSelector(productsData);
@@ -14,6 +14,10 @@ const Products = () => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   const [filteredItems, setFilteredItems] = useState(products);
   const [searchInput, setSearchInput] = useState("");
+
+  useEffect(() => {
+    document.title = "Products";
+  }, []);
 
   const Add_to_cart = (product) => {
     dispatch(
@@ -44,6 +48,10 @@ const Products = () => {
     e.preventDefault();
     setSearchInput(e.target.value);
     filterSearch(searchInput);
+  };
+
+  const handleproducts = (id) => {
+    console.log(id);
   };
 
   return (
@@ -126,17 +134,25 @@ const Products = () => {
             {filteredItems?.map((product) => {
               return (
                 <div className="col-md-2 border border-light" key={product.id}>
-                  <div className="trending-img">
-                    <div style={{ height: "70%" }}>
+                  <div className="product-segment">
+                    <div className="product-image">
                       <img
-                        src={product.images}
-                        style={{ height: "200px", width: "190px" }}
+                        className="product-image-size"
+                        src={
+                          product.images ||
+                          "/Users/rakshithds/Desktop/ReactJS/frontend/src/images/default.png"
+                        }
                         alt=""
                       />
                     </div>
                     <div style={{ height: "21px" }}>
                       <span className="fw-bold adjust-font text-truncate empty">
-                        {product.title}
+                        <Link
+                          to={`/Products/${product.id}`}
+                          className="adjust-font"
+                        >
+                          {product.title}
+                        </Link>
                       </span>
                     </div>
                     <div className="d-inline-block text-truncate manage-text">

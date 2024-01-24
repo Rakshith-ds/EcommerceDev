@@ -1,8 +1,6 @@
 import { useDispatch, useSelector } from "react-redux";
-import { Button } from "react-bootstrap";
-import Card from "react-bootstrap/Card";
 import { cartItems, remove } from "../Slices/CartSlice";
-import CartItem from "./CartItem";
+import "../css/cart.css";
 
 const Cart = () => {
   const cartProducts = useSelector(cartItems);
@@ -13,48 +11,47 @@ const Cart = () => {
   };
 
   return (
-    <div>
-      {cartProducts?.map((product) => {
-        return (
-          <div
-            style={{
-              marginTop: "20px",
-              marginBottom: "30px",
-              marginLeft: "300px",
-              textAlign: "center",
-              width: "50%",
-            }}
-          >
-            {/* <Card className="h-100">
-              <div className="text-center" key={product.id}>
-                <Card.Img
-                  variant="top"
-                  src={product.image}
-                  style={{
-                    height: "100px",
-                    width: "130px",
-                  }}
-                />
-              </div>
+    <>
+      <section className="image-list">
+        <div className="container">
+          <div className="total-cart">
+            <div className="row">
+              {cartProducts?.map((product) => {
+                return (
+                  <div className="cart-items" key={product.id}>
+                    <div className=" cart-items border ">
+                      <div className="cart-image">
+                        <img src={product.images} alt="" />
+                      </div>
+                      <div className="cart-title">
+                        <span className="fw-bold adjust-font text-truncate empty">
+                          {product.title}
+                        </span>
+                      </div>
 
-              <Card.Body>
-                <Card.Title>{product.title}</Card.Title>
-                <Card.Text>${product.price}</Card.Text>
-              </Card.Body>
-              <Card.Footer>
-                <Button
-                  variant="danger"
-                  onClick={() => removeCart(product?.cartId)}
-                >
-                  Remove
-                </Button>
-              </Card.Footer>
-            </Card> */}
-            <CartItem />
+                      <div className="cart-price">
+                        <span className="fw-bold adjust-font text-truncate empty">
+                          ${product.price}
+                        </span>
+                      </div>
+                      <button
+                        type="button"
+                        onClick={() => removeCart(product?.cartId)}
+                        className="btn-buy"
+                      >
+                        Remove
+                      </button>
+                      <div className="overlay"></div>
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+            <h1>Total</h1>
           </div>
-        );
-      })}
-    </div>
+        </div>
+      </section>
+    </>
   );
 };
 

@@ -7,6 +7,7 @@ import RootLayout from "./Compnents/RootLayout.js";
 import Home from "./Compnents/Home.js";
 import Cart from "./Compnents/Cart.js";
 import Rooting from "./Compnents/Rooting.js";
+import SingleProduct from "./Compnents/SingleProduct.js";
 
 function App() {
   return (
@@ -21,6 +22,7 @@ function App() {
             <Route path="/Home" element={<Home />} />
             <Route path="/Products" Component={() => <Rooting />} />
             <Route path="/Cart" Component={() => <Cart />} />
+            <Route path="/Products/:productId" element={<SingleProduct />} />
           </Route>
         </Routes>
       </Router>

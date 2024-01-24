@@ -1,6 +1,10 @@
+import { useEffect } from "react";
 import "../css/home.css";
 
 const Home = () => {
+  useEffect(() => {
+    document.title = "Home Page";
+  }, []);
   return (
     <div>
       <section className="header">
@@ -63,7 +67,7 @@ const Home = () => {
       {/* <!-- Offer section --> */}
 
       <section className="offer">
-        <div classNameclass="row">
+        <div className="row">
           <div className="col-md-6 text-center">
             <img src="https://i.ibb.co/gjjSk0z/exclusive.jpg" alt="" />
           </div>

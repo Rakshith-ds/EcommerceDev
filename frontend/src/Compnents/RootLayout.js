@@ -16,9 +16,10 @@ const RootLayout = () => {
   return (
     <div>
       <Provider store={store}>
+        {/* <Navboard user={user} /> */}
         <main>
-          <Navboard user={user} />
-          <div>
+          <Navboard user={user} style={{ height: "70px" }} />
+          <div style={{ marginTop: "70px" }}>
             <Outlet />
           </div>
         </main>
