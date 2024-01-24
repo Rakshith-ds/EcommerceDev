@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { add } from "../Slices/CartSlice";
 import { cartItems } from "../Slices/CartSlice";
 import "../css/singleproduct.css";
+import Button from "react-bootstrap/Button";
 
 const SingleProduct = () => {
   const { productId } = useParams();
@@ -25,29 +26,29 @@ const SingleProduct = () => {
   );
   return (
     <div className="single-product-segment" key={product.id}>
-      <div className=" single-product-segment border ">
-        <div className="single-product-image">
-          <img src={product.images} alt="" />
-        </div>
-        <div className="single-product-title">
-          <span className="fw-bold adjust-font text-truncate empty">
-            {product.title}
-          </span>
-          {/* </div>
-
-        <div className="single-product-price"> */}
-          <span className="fw-bold adjust-font text-truncate empty">
-            ${product.price}
-          </span>
-        </div>
-        <button
-          type="button"
+      {/* <div className=" single-product-segment  "> */}
+      <div className="single-product-image">
+        <img
+          className="single-product-image-size"
+          src={product.images}
+          alt=""
+        />
+      </div>
+      <div className="single-product-title">
+        <span className="fw-bold single-product-title-font text-truncate empty">
+          {product.title}
+        </span>
+        <span className="single-product-description">
+          {product.description}
+        </span>
+        <span className="single-product-price">${product.price}</span>
+        <Button
+          variant="primary"
           onClick={() => Add_to_cart(product?.cartId)}
-          className="btn-buy"
+          // className="btn-buy"
         >
-          Remove
-        </button>
-        <div className="overlay"></div>
+          Add to Cart
+        </Button>
       </div>
     </div>
   );
