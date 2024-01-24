@@ -41,7 +41,7 @@ const Cart = () => {
                       >
                         Remove
                       </button>
-                      <div className="overlay"></div>
+                      <div className="overlay-cart"></div>
                     </div>
                   </div>
                 );

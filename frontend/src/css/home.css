@@ -149,7 +149,7 @@
     z-index: 1;
 }
 
-.overlay {
+.overlay-home {
     height: 0;
     width: 100%;
     background: #333;
@@ -159,7 +159,7 @@
     transition: 0.5s;
 }
 
-.trending-img:hover .overlay {
+.trending-img:hover .overlay-home {
     opacity: 0.5;
     height: 100%;
 }

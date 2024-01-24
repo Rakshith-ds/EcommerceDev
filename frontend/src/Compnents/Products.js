@@ -5,6 +5,7 @@ import { cartItems } from "../Slices/CartSlice";
 import { useState, useEffect } from "react";
 import "../css/products.css";
 import { Link } from "react-router-dom";
+import Form from "react-bootstrap/Form";
 
 const Products = () => {
   const products = useSelector(productsData);
@@ -28,83 +29,55 @@ const Products = () => {
 
   return (
     <>
-      {/* <div
-        style={{
-          display: "flex",
-          width: "100%",
-        }}
-      >
-        <div style={{ width: "72%", display: "flex" }}>
-          <h1>Products</h1>
-          <div
-            style={{
-              display: "flex",
-              justifyContent: "right",
-              marginTop: "10px",
-              marginLeft: "200px",
-            }}
-          >
-            <h4>Search: </h4>
-            <input
-              style={{ width: "230px", height: "35px", marginLeft: "10px" }}
-              type="search"
-              placeholder="Search here"
-              onChange={handleSearch}
-              value={searchInput}
-            />
+      <section className="product-list">
+        <div style={{ display: "flex", width: "15%", marginLeft: "5px" }}>
+          <div className="categories-align">
+            <h3>Filters</h3>
           </div>
         </div>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "right",
-            marginTop: "5px",
-          }}
-        >
-          <h4
-            style={{
-              marginTop: "8px",
-              marginLeft: "10px",
-            }}
-          >
-            Filter:
-          </h4>
-          <select
-            style={{
-              width: "130px",
-              height: "30px",
-              marginTop: "8px",
-              marginLeft: "10px",
-            }}
-            defaultValue="All"
-            onChange={(e) => setSelectedCategory(e.target.value)}
-          >
-            <option value="All">All</option>
-            <option value="men's clothing">men's clothing</option>
-            <option value="electronics">electronics</option>
-          </select>
-        </div>
-        <Button
-          variant="primary"
-          onClick={getFilteredItems}
-          style={{
-            height: "30px",
-            width: "70px",
-            marginTop: "12px",
-            marginLeft: "20px",
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-          }}
-        >
-          ok
-        </Button>
-      </div> */}
-      <section className="product-list">
-        <h4>Categories</h4>
         <div style={{ display: "flex" }}>
           <div className="categories border">
-            <h4>Hey</h4>
+            <div className="categories-align">
+              <h4>Categories</h4>
+              <Form>
+                <div className="mb-2">
+                  <Form.Check // prettier-ignore
+                    type="checkbox"
+                    inline
+                    name="group1"
+                    label="Electronics"
+                    id={`inline-checkbox-Electronics`}
+                  />
+                </div>
+                <div className="mb-2">
+                  <Form.Check // prettier-ignore
+                    inline
+                    name="group1"
+                    type="checkbox"
+                    id={`inline-checkbox-Furniture`}
+                    label="Furniture"
+                  />
+                </div>
+                <div className="mb-2">
+                  <Form.Check // prettier-ignore
+                    inline
+                    name="group1"
+                    type="checkbox"
+                    id={`inline-checkbox-Shoes`}
+                    label="Shoes"
+                  />
+                </div>
+                <div className="mb-2">
+                  <Form.Check // prettier-ignore
+                    inline
+                    name="group1"
+                    type="checkbox"
+                    id={`inline-checkbox-Miscellaneous`}
+                    label="Miscellaneous"
+                  />
+                </div>
+              </Form>
+            </div>
           </div>
           <div className="row" style={{ width: "83%" }}>
             {filteredItems?.map((product) => {
@@ -114,10 +87,7 @@ const Products = () => {
                     <div className="product-image">
                       <img
                         className="product-image-size"
-                        src={
-                          product.images ||
-                          "/Users/rakshithds/Desktop/ReactJS/frontend/src/images/default.png"
-                        }
+                        src={product.images}
                         alt=""
                       />
                     </div>
@@ -150,7 +120,7 @@ const Products = () => {
                     >
                       Buy Now
                     </button>
-                    <div className="overlay"></div>
+                    <div className="overlay-products"></div>
                   </div>
                 </div>
               );

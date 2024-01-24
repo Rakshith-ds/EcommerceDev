@@ -12,12 +12,14 @@ const SingleProduct = () => {
   const cartItems1 = useSelector(cartItems);
 
   const dispatch = useDispatch();
-  console.log(products);
-  console.log(productId);
+  console.log(cartItems1);
 
   const Add_to_cart = (product) => {
     dispatch(
-      add([...cartItems1, ...[{ ...product, cartId: cartItems1.length }]])
+      add([
+        ...cartItems1,
+        ...[{ ...product, cartId: cartItems1.length, quantity: 1 }],
+      ])
     );
   };
 
@@ -42,7 +44,7 @@ const SingleProduct = () => {
           {product.description}
         </span>
         <span className="single-product-price">${product.price}</span>
-        <Button variant="primary" onClick={() => Add_to_cart(product?.cartId)}>
+        <Button variant="primary" onClick={() => Add_to_cart(product)}>
           Add to Cart
         </Button>
       </div>

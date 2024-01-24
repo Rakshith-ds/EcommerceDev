@@ -72,6 +72,11 @@
 
 .categories{
     width: 15%;
+    margin-left: 5px;
+}
+
+.categories-align {
+    margin-left: 10%;
 }
 
 .product-image {
@@ -121,7 +126,7 @@
     position: absolute;
 }
 
-.overlay {
+.overlay-products {
     height: 0;
     width: 100%;
     background: #333;
@@ -131,7 +136,7 @@
     transition: 0.5s;
 }
 
-.product-segment:hover .overlay {
+.product-segment:hover .overlay-products {
     opacity: 0.5;
     width: 100%;
     height: 69%;

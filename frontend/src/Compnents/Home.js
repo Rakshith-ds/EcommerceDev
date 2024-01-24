@@ -57,7 +57,7 @@ const Home = () => {
                 <button type="button" className="btn-buy">
                   Buy Now
                 </button>
-                <div className="overlay"></div>
+                <div className="overlay-home"></div>
               </div>
             </div>
           </div>

@@ -91,9 +91,9 @@ span {
     position: absolute;
 }
 
-.overlay {
+.overlay-cart {
     height: 0;
-    width: 50%;
+    width: 100%;
     background: #333;
     position: absolute;
     top: 0;
@@ -101,7 +101,7 @@ span {
     transition: 0.5s;
 }
 
-.cart-items:hover .overlay {
+.cart-items:hover .overlay-cart {
     opacity: 0.5;
     height: 100%;
 }
