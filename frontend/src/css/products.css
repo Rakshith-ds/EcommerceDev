@@ -1,0 +1,125 @@
+.image-list {
+    padding: 20px 0;
+}
+
+.fashion-box {
+    margin: 80px 0;
+}
+
+.title-style h1 {
+    padding: 40px 0;
+}
+
+.title-style {
+    margin: 0 auto 80px;
+    height: 120px;
+    width: 80%;
+    min-width: 700px;
+    background: #fff;
+    position: relative;
+    box-shadow: 0 4px 5px 0 rgba(0, 0, 50, 0.5);
+}
+
+.title-style::after {
+    content: "";
+    height: 100px;
+    width: 200px;
+    background-color: #f992a6;
+    position: absolute;
+    top: -10px;
+    left: -10px;
+    z-index: -1;
+}
+
+.title-style::before {
+    content: "";
+    height: 100px;
+    width: 200px;
+    background-color: #f992a6;
+    position: absolute;
+    bottom: -10px;
+    right: -10px;
+    z-index: -1;
+}
+
+.adjust-font {
+    font-size: 14px;
+    margin-bottom: 0px;
+}
+
+.adjust-font-title {
+    font-size: 14px;
+    margin-bottom: 0px;
+    padding-top: 0px;
+}
+
+
+.trending-img {
+    position: relative;
+    margin-bottom: 15px;
+    text-align: left;
+    /* height: 100%; */
+    /* padding-top: 10px; */
+    width: 100%;
+    
+}
+
+
+.trending-img img {
+    width: 100%;
+    /* height: 200px; */
+   
+}
+
+.btn-buy {
+    width: 150px;
+    padding: 10px 0;
+    outline: none !important;
+    border: 0;
+    border-radius: 2px;
+    position: absolute;
+    background: #fff;
+    left: 50%;
+    bottom: 0;
+    transform: translate(-50%, 0);
+    transition: 0.6s;
+    opacity: 0;
+}
+
+.trending-img:hover .btn-buy {
+    transform: translate(-50%, 50%);
+    bottom: 50%;
+    opacity: 1;
+    z-index: 1;
+}
+
+.manage-text, span {
+    height: 17px;
+    max-width: 100%;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: inline-block;
+}
+
+.manage-text:hover span:not(.empty) {
+    background-color: #BDE5F8;
+    overflow: visible;
+    white-space: normal;
+    height: auto;
+    position: absolute;
+}
+
+.overlay {
+    height: 0;
+    width: 100%;
+    background: #333;
+    position: absolute;
+    top: 0;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+.trending-img:hover .overlay {
+    opacity: 0.5;
+    height: 100%;
+}

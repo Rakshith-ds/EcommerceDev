@@ -8,6 +8,8 @@ import "../index";
 import { useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { cartItems } from "../Slices/CartSlice";
+import Form from "react-bootstrap/Form";
+import Button from "react-bootstrap/Button";
 
 const Navboard = (props) => {
   const navigate = useNavigate();
@@ -22,7 +24,8 @@ const Navboard = (props) => {
 
   return (
     <>
-      <Navbar bg="primary" data-bs-theme="dark">
+      {/* <Navbar style={{ backgroundColor: "#f5f6fc" }} fixed="top"> */}
+      <Navbar bg="light" data-bs-theme="light">
         <Container>
           <Navbar.Brand to="/Home" as={Link}>
             Navbar
@@ -35,6 +38,16 @@ const Navboard = (props) => {
               Products
             </Nav.Link>
           </Nav>
+          <Form className=" me-auto justify-content-center d-flex">
+            <Form.Control
+              type="search"
+              placeholder="Search"
+              className="me-2"
+              aria-label="Search"
+              style={{ width: "400px" }}
+            />
+            <Button variant="outline-success">Search</Button>
+          </Form>
           <Nav className="justify-content-end">
             <Image
               src="https://www.vhv.rs/dpng/d/15-155087_dummy-image-of-user-hd-png-download.png"

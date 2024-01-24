@@ -1,10 +1,10 @@
 import Button from "react-bootstrap/Button";
-import Card from "react-bootstrap/Card";
 import { useDispatch, useSelector } from "react-redux";
 import { add } from "../Slices/CartSlice";
 import { productsData } from "../Slices/ProductSlice";
 import { cartItems } from "../Slices/CartSlice";
 import { useState } from "react";
+import "../css/products.css";
 
 const Products = () => {
   const products = useSelector(productsData);
@@ -23,7 +23,6 @@ const Products = () => {
       ])
     );
   };
-
   const getFilteredItems = (e) => {
     if (selectedCategory === "All") {
       setFilteredItems(products);
@@ -49,7 +48,7 @@ const Products = () => {
 
   return (
     <>
-      <div
+      {/* <div
         style={{
           display: "flex",
           width: "100%",
@@ -120,51 +119,51 @@ const Products = () => {
         >
           ok
         </Button>
-      </div>
-      <div className="row" style={{ marginRight: "0px" }}>
-        {filteredItems?.map((product) => {
-          return (
-            <div
-              key={product.id}
-              className="col-md-3"
-              style={{
-                marginBottom: "10px",
-                textAlign: "center",
-                paddingTop: "10px",
-                paddingLeft: "20px",
-                paddingRight: "25px",
-              }}
-            >
-              <Card className="h-100">
-                <div className="text-center">
-                  <Card.Img
-                    variant="top"
-                    src={product.image}
-                    style={{
-                      height: "100px",
-                      width: "130px",
-                    }}
-                  />
+      </div> */}
+      <section className="image-list">
+        <div className="container">
+          <div className="row">
+            {filteredItems?.map((product) => {
+              return (
+                <div className="col-md-2 border border-light" key={product.id}>
+                  <div className="trending-img">
+                    <div style={{ height: "70%" }}>
+                      <img
+                        src={product.images}
+                        style={{ height: "200px", width: "190px" }}
+                        alt=""
+                      />
+                    </div>
+                    <div style={{ height: "21px" }}>
+                      <span className="fw-bold adjust-font text-truncate empty">
+                        {product.title}
+                      </span>
+                    </div>
+                    <div className="d-inline-block text-truncate manage-text">
+                      <span className="adjust-font-title text-truncate empty fw-light">
+                        {product.description}
+                      </span>
+                    </div>
+                    <div>
+                      <span className="fw-bold adjust-font text-truncate empty">
+                        ${product.price}
+                      </span>
+                    </div>
+                    <button
+                      type="button"
+                      onClick={() => Add_to_cart(product)}
+                      className="btn-buy"
+                    >
+                      Buy Now
+                    </button>
+                    <div className="overlay"></div>
+                  </div>
                 </div>
-
-                <Card.Body>
-                  <Card.Title>{product.title}</Card.Title>
-                  <Card.Text>${product.price}</Card.Text>
-                </Card.Body>
-
-                <Card.Footer>
-                  <Button
-                    variant="primary"
-                    onClick={() => Add_to_cart(product)}
-                  >
-                    Add to cart
-                  </Button>
-                </Card.Footer>
-              </Card>
-            </div>
-          );
-        })}
-      </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
     </>
   );
 };
