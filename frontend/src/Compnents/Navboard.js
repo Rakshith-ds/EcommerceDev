@@ -4,19 +4,21 @@ import Navbar from "react-bootstrap/Navbar";
 import Image from "react-bootstrap/Image";
 import { useNavigate } from "react-router-dom";
 import NavDropdown from "react-bootstrap/NavDropdown";
-import "../index";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { cartItems } from "../Slices/CartSlice";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import { useState } from "react";
+import { searchword } from "../Slices/SearchSlice";
 
-const Navboard = (props) => {
+const Navboard = () => {
   const navigate = useNavigate();
   const cartProducts = useSelector(cartItems);
   const userName = sessionStorage.getItem("name");
   const [searchInput, setSearchInput] = useState("");
+
+  const dispatch = useDispatch();
 
   const logout = () => {
     sessionStorage.clear();
@@ -30,20 +32,11 @@ const Navboard = (props) => {
   };
 
   const getFilteredItems = () => {
-    navigate("/SearchProducts", { state: { searchInput } });
+    dispatch(searchword(searchInput));
   };
-  console.log(searchInput);
-
-  // const handleOnKeyDown = (e) => {
-  //   e.preventDefault();
-  //   if (e.key === "Enter") {
-  //     navigate("/SearchProducts", { state: { searchInput } });
-  //   }
-  // };
 
   return (
     <>
-      {/* <Navbar style={{ backgroundColor: "#f5f6fc" }} fixed="top"> */}
       <Navbar bg="light" data-bs-theme="light" fixed="top">
         <Container>
           <Navbar.Brand to="/Home" as={Link}>

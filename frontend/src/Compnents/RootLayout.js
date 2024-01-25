@@ -12,7 +12,7 @@ const RootLayout = () => {
     if (user === null || user === "") {
       return navigate("/");
     }
-  }, [user]);
+  });
   return (
     <div>
       <Provider store={store}>

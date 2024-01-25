@@ -1,8 +1,8 @@
 import { useState, useEffect } from "react";
 import { fetchProducts } from "../Slices/ProductSlice";
 import Loading from "./Loading";
-import Products from "./Products";
 import { useDispatch } from "react-redux";
+import Products from "./Products";
 
 const Rooting = () => {
   const [loading, setLoading] = useState(true);
@@ -16,7 +16,7 @@ const Rooting = () => {
   };
   useEffect(() => {
     fetchUserData();
-  }, []);
+  });
   if (loading) {
     return <Loading />;
   } else {

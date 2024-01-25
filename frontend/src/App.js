@@ -8,7 +8,6 @@ import Home from "./Compnents/Home.js";
 import Cart from "./Compnents/Cart.js";
 import Rooting from "./Compnents/Rooting.js";
 import SingleProduct from "./Compnents/SingleProduct.js";
-import SeachProducts from "./Compnents/SearchProducts.js";
 
 function App() {
   return (
@@ -24,7 +23,6 @@ function App() {
             <Route path="/Products" Component={() => <Rooting />} />
             <Route path="/Cart" Component={() => <Cart />} />
             <Route path="/Products/:productId" element={<SingleProduct />} />
-            <Route path="/SearchProducts" Component={() => <SeachProducts />} />
           </Route>
         </Routes>
       </Router>
