@@ -13,10 +13,23 @@ const Products = () => {
   const dispatch = useDispatch();
 
   const [filteredItems, setFilteredItems] = useState(products);
+  const [checkboxSearch, setcheckboxSearch] = useState([]);
+
+  useEffect(() => {
+    setFilteredItems(products);
+  }, []);
 
   useEffect(() => {
     document.title = "Products";
-  }, []);
+
+    const filteredData =
+      checkboxSearch.length === 0
+        ? products
+        : products.filter((item) =>
+            checkboxSearch.includes(item.category.name)
+          );
+    setFilteredItems(filteredData);
+  }, [checkboxSearch, products]);
 
   const Add_to_cart = (product) => {
     dispatch(
@@ -25,6 +38,20 @@ const Products = () => {
         ...[{ ...product, cartId: cartItems1.length, quantity: 1 }],
       ])
     );
+  };
+
+  const handleCheck = (e) => {
+    if (e.target.value === "All") {
+      setcheckboxSearch([]);
+    } else {
+      if (e.target.checked === true) {
+        setcheckboxSearch((prevSearch) => [...prevSearch, e.target.value]);
+      } else {
+        setcheckboxSearch((prevSearch) =>
+          prevSearch.filter((value) => value !== e.target.value)
+        );
+      }
+    }
   };
 
   return (
@@ -45,8 +72,21 @@ const Products = () => {
                     type="checkbox"
                     inline
                     name="group1"
+                    label="All"
+                    id={`inline-checkbox-all`}
+                    onChange={(e) => handleCheck(e)}
+                    value={"All"}
+                  />
+                </div>
+                <div className="mb-2">
+                  <Form.Check // prettier-ignore
+                    type="checkbox"
+                    inline
+                    name="group1"
                     label="Electronics"
                     id={`inline-checkbox-Electronics`}
+                    onChange={(e) => handleCheck(e)}
+                    value={"Electronics"}
                   />
                 </div>
                 <div className="mb-2">
@@ -55,7 +95,9 @@ const Products = () => {
                     name="group1"
                     type="checkbox"
                     id={`inline-checkbox-Furniture`}
+                    onChange={(e) => handleCheck(e)}
                     label="Furniture"
+                    value={"Furniture"}
                   />
                 </div>
                 <div className="mb-2">
@@ -64,7 +106,9 @@ const Products = () => {
                     name="group1"
                     type="checkbox"
                     id={`inline-checkbox-Shoes`}
+                    onChange={(e) => handleCheck(e)}
                     label="Shoes"
+                    value={"Shoes"}
                   />
                 </div>
                 <div className="mb-2">
@@ -73,7 +117,9 @@ const Products = () => {
                     name="group1"
                     type="checkbox"
                     id={`inline-checkbox-Miscellaneous`}
+                    onChange={(e) => handleCheck(e)}
                     label="Miscellaneous"
+                    value={"Miscellaneous"}
                   />
                 </div>
               </Form>
