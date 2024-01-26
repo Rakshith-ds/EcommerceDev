@@ -3,15 +3,15 @@ import { fetchProducts } from "../Slices/ProductSlice";
 import Loading from "./Loading";
 import { useDispatch } from "react-redux";
 import Products from "./Products";
+import data_json from "../data/data";
 
 const Rooting = () => {
   const [loading, setLoading] = useState(true);
+  const [fulldata, setFullData] = useState(data_json);
   const dispatch = useDispatch();
 
   const fetchUserData = async () => {
-    const response = await fetch("https://api.escuelajs.co/api/v1/products");
-    const data = await response.json();
-    dispatch(fetchProducts(data));
+    dispatch(fetchProducts(fulldata));
     setLoading(false);
   };
   useEffect(() => {

@@ -1,23 +1,19 @@
 const category_list = [
   {
     id: 2,
-    name: "group1",
-    category: "Electronics",
+    name: "Electronics",
   },
   {
     id: 3,
-    name: "group1",
-    category: "Furniture",
+    name: "Furniture",
   },
   {
     id: 4,
-    name: "group1",
-    category: "Shoes",
+    name: "Shoes",
   },
   {
     id: 5,
-    name: "group1",
-    category: "Miscellaneous",
+    name: "Miscellaneous",
   },
 ];
 

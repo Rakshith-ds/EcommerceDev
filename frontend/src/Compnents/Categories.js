@@ -40,10 +40,10 @@ const Categories = (props) => {
                       type="checkbox"
                       inline
                       name={category.name}
-                      label={category.category}
-                      id={`inline-checkbox-${category.category}`}
+                      label={category.name}
+                      id={`inline-checkbox-${category.name}`}
                       onChange={(e) => handleCheck(e)}
-                      value={category.category}
+                      value={category.name}
                     />
                   </div>
                 </Form>

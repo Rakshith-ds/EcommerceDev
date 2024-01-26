@@ -20,11 +20,7 @@ const Products = () => {
           <div className="categories border">
             <Categories oncheckboxchange={handleCheckboxSearch} />
           </div>
-          <ProductResults
-            products={products}
-            // searchInput={searchInput}
-            checkboxSearch={checkboxSearch}
-          />
+          <ProductResults products={products} checkboxSearch={checkboxSearch} />
         </div>
       </section>
     </>

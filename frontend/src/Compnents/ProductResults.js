@@ -25,7 +25,6 @@ const ProductResults = (props) => {
   }, [searchkey, searchItems1]);
 
   const Add_to_cart = (product) => {
-    console.log(product);
     dispatch(add([...cartItems1, ...[{ ...product }]]));
   };
 
@@ -39,7 +38,7 @@ const ProductResults = (props) => {
     const filteredData =
       searchItems1.length === 0
         ? products
-        : products.filter((item) => searchItems1.includes(item.category.name));
+        : products.filter((item) => searchItems1.includes(item.name));
     setFilteredItems(filteredData);
   };
 
@@ -47,7 +46,6 @@ const ProductResults = (props) => {
     <>
       <div className="row" style={{ width: "83%" }}>
         {filteredItems?.map((product) => {
-          console.log(product);
           return (
             <div className=" col-md-2 border" key={product.id}>
               <div className="product-segment">
