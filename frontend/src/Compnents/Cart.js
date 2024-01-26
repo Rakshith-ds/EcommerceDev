@@ -6,8 +6,8 @@ const Cart = () => {
   const cartProducts = useSelector(cartItems);
   const dispatch = useDispatch();
 
-  const removeCart = (id) => {
-    dispatch(remove(cartProducts.filter((item) => item?.cartId !== id)));
+  const removeCart = (cid) => {
+    dispatch(remove(cartProducts.filter((item) => item.id !== cid)));
   };
 
   return (
@@ -36,7 +36,7 @@ const Cart = () => {
                       </div>
                       <button
                         type="button"
-                        onClick={() => removeCart(product?.cartId)}
+                        onClick={() => removeCart(product.id)}
                         className="btn-buy"
                       >
                         Remove
