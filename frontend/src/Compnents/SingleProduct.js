@@ -12,7 +12,6 @@ const SingleProduct = () => {
   const cartItems1 = useSelector(cartItems);
 
   const dispatch = useDispatch();
-  console.log(cartItems1);
 
   const Add_to_cart = (product) => {
     dispatch(

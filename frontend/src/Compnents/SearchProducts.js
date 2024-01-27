@@ -1,19 +1,18 @@
 import { useSelector, useDispatch } from "react-redux";
 import { productsData } from "../Slices/ProductSlice";
+import { useParams } from "react-router-dom";
 import "../css/products.css";
 import Categories from "./Categories.js";
 import ProductResults from "./ProductResults";
 import { useState, useEffect } from "react";
-import {
-  selectSearchData,
-  resetsearch,
-  searchword,
-} from "../Slices/SearchSlice";
+import { selectSearchData, searchword } from "../Slices/SearchSlice";
 
-const Products = () => {
+const SearchProducts = () => {
   const products = useSelector(productsData);
   const [checkboxSearch, setcheckboxSearch] = useState([]);
   const searchItems1 = useSelector(selectSearchData);
+
+  const { searchQuery } = useParams();
 
   const dispatch = useDispatch();
 
@@ -22,8 +21,7 @@ const Products = () => {
   };
 
   useEffect(() => {
-    dispatch(resetsearch());
-    dispatch(searchword(""));
+    dispatch(searchword(searchQuery));
   }, [dispatch]);
 
   return (
@@ -40,4 +38,4 @@ const Products = () => {
     </>
   );
 };
-export default Products;
+export default SearchProducts;

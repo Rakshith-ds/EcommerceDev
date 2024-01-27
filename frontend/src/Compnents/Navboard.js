@@ -8,7 +8,6 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 import { cartItems } from "../Slices/CartSlice";
 import Form from "react-bootstrap/Form";
-import Button from "react-bootstrap/Button";
 import { useState } from "react";
 import { searchword } from "../Slices/SearchSlice";
 
@@ -29,10 +28,20 @@ const Navboard = () => {
   const handleSearch = (e) => {
     e.preventDefault();
     setSearchInput(e.target.value);
+    if (e.target.value.length === 0) {
+      getFilteredItems();
+    }
   };
 
   const getFilteredItems = () => {
     dispatch(searchword(searchInput));
+  };
+
+  const handleSubmit = (event) => {
+    event.preventDefault();
+    dispatch(searchword(searchInput));
+    setSearchInput("");
+    navigate(`/Products/Search/${searchInput}`);
   };
 
   return (
@@ -50,20 +59,19 @@ const Navboard = () => {
               Products
             </Nav.Link>
           </Nav>
-          <Form className=" me-auto justify-content-center d-flex">
+          <Form
+            className=" me-auto justify-content-center d-flex"
+            onSubmit={handleSubmit}
+          >
             <Form.Control
               type="search"
-              placeholder="Search"
+              placeholder="Search for products"
               className="me-2"
               aria-label="Search"
               style={{ width: "400px" }}
               onChange={handleSearch}
               value={searchInput}
-              // onKeyDown={handleOnKeyDown}
             />
-            <Button variant="outline-success" onClick={getFilteredItems}>
-              Search
-            </Button>
           </Form>
           <Nav className="justify-content-end">
             <Image

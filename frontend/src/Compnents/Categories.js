@@ -4,6 +4,7 @@ import data from "../data/category_data";
 import { useDispatch, useSelector } from "react-redux";
 import { selectSearchData } from "../Slices/SearchSlice";
 import { add, remove } from "../Slices/SearchSlice";
+import Link from "../api/link";
 
 const Categories = (props) => {
   const [checkboxSearch, setcheckboxSearch] = useState([]);
@@ -16,7 +17,6 @@ const Categories = (props) => {
       ? dispatch(add([...searchItems1, value]))
       : dispatch(remove(searchItems1.filter((val) => val !== value)));
     setcheckboxSearch(updatedSearch);
-
     props.oncheckboxchange(checkboxSearch);
   };
 

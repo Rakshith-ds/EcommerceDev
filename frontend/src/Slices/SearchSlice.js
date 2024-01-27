@@ -18,6 +18,9 @@ const searchSlice = createSlice({
     searchword(state, action) {
       state.word = action.payload;
     },
+    resetsearch(state) {
+      state.searchData = [];
+    },
   },
 });
 
@@ -31,5 +34,5 @@ export const selectSearchData = createSelector(
 
 export const selectSearchWord = createSelector([searchKey], (word) => word);
 
-export const { add, remove, searchword } = searchSlice.actions;
+export const { add, remove, searchword, resetsearch } = searchSlice.actions;
 export default searchSlice.reducer;

@@ -5,7 +5,11 @@ import { productsData } from "../Slices/ProductSlice";
 import "../css/products.css";
 import { Link } from "react-router-dom";
 import { cartItems } from "../Slices/CartSlice";
-import { selectSearchData, selectSearchWord } from "../Slices/SearchSlice";
+import {
+  selectSearchData,
+  selectSearchWord,
+  resetsearch,
+} from "../Slices/SearchSlice";
 
 const ProductResults = (props) => {
   const products = useSelector(productsData);
@@ -29,7 +33,7 @@ const ProductResults = (props) => {
   };
 
   const filterSearch = (search) => {
-    const results = props.products.filter((items) => {
+    const results = products.filter((items) => {
       return items.title.toLowerCase().includes(search.toLowerCase());
     });
     setFilteredItems(results);
@@ -41,6 +45,11 @@ const ProductResults = (props) => {
         : products.filter((item) => searchItems1.includes(item.name));
     setFilteredItems(filteredData);
   };
+
+  useEffect(() => {
+    setFilteredItems(products);
+    dispatch(resetsearch());
+  }, [products]);
 
   return (
     <>
